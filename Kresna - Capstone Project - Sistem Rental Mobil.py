@@ -1,10 +1,10 @@
 DictMobil = {
-    "Jenis"     : ["Agya"       , "Veloz"       , "Zenix"       , "Zigra"       , "Veloz"       , "Hi-Ace"      , "L-300"        , "Veloz"       ],
+    "Jenis"     : ["Agya"       , "Veloz"       , "Zenix"       , "Zigra"       , "Veloz"       , "Hi-Ace"      , "L-300"       , "Veloz"       ],
     "Brand"     : ["Toyota"     , "Toyota"      , "Toyota"      , "Daihatsu"    , "Toyota"      , "Toyota"      , "Mitsubishi"  , "Toyota"      ],
     "Plat"      : ["B 1234 CTH" , "B 9876 CTH"  , "N 1234 CTH"  , "N 9876 CTH"  , "D 1234 CTH"  , "D 9876 CTH"  , "A 1234 CTH"  , "A 9876 CTH"  ],
     "Kapasitas" : [5            , 7             , 8             , 6             , 7             , 12            , 3             , 7             ],
     "Tahun"     : [2021         , 2023          , 2022          , 2020          , 2019          , 2022          , 2021          , 2022          ],
-    # "Biaya"     : 250_000      , 300_000       , 400_000       , 275_000       , 300_000       , 10_600_000    , 75_000        , 4_000_000     ],
+    "Biaya"     : [250_000      , 300_000       , 400_000       , 275_000       , 300_000       , 10_600_000    , 75_000        , 4_000_000     ],
     "Jaminan"   : ["-"          , "KTP"         , "CC"          , "-"           , "-"           , "KTP"         , "-"           , "-"           ],
     "Status"    : ["Tersedia"   , "Dipakai"     , "Dipakai"     , "Tersedia"    , "Tersedia"    , "Dipakai"     , "Tersedia"    , "Tersedia"    ],
     "Mulai"     : ["-"          , "24-02-2024"  , "22-02-2024"  , "-"           , "-"           , "22-02-2024"  , "-"           , "-"           ],
@@ -14,9 +14,7 @@ DictMobil = {
 # Main Menu
 def TitleMenu(TextMenu):
     print()
-    print("|" + f"{f"{"---------" + len(TextMenu) * "-" + "----------"}":^120}" + "|")
-    print("|" + f"{f"{"--- MENU " + TextMenu + " MOBIL ---"}":^120}" + "|")
-    print("|" + f"{f"{"---------" + len(TextMenu) * "-" + "----------"}":^120}" + "|")
+    print("MENU " + f"{TextMenu}" + " MOBIL")
 
 
 DictMainMenu = {
@@ -34,21 +32,21 @@ DictMainMenu = {
 def MenuUtama():
     print()
     for index, item in enumerate(DictMainMenu["Menu"]):
-        print("|" + f"{f"{index + 1}. {item}":^120}" + "|")
+        print(f"{index + 1}. {item}")
     global DictMainMenuValLen
     DictMainMenuValLen = index
     
     
-def SubMenu(DictionaryMenu):
+def SubMenu(DictSubMenu):
     print()
-    for item in range(len(DictionaryMenu["Header"])):
-        print("|" + f"{DictionaryMenu["Header"][item]:^120}" + "|")
+    for item in range(len(DictSubMenu["Header"])):
+        print(DictSubMenu["Header"][item])
     print()
-    for index, item in enumerate(DictionaryMenu["Menu"]):
-        print("|" + f"{f"{index + 1}. {item}":^120}" + "|")
+    for index, item in enumerate(DictSubMenu["Menu"]):
+        print(f"{index + 1}. {item}")
     print()
-    for item in range(len(DictionaryMenu["Footer"])):
-        print("|" + f"{DictionaryMenu["Footer"][item]:^120}" + "|")
+    for item in range(len(DictSubMenu["Footer"])):
+        print(DictSubMenu["Footer"][item])
 
 
 # Dictionary Menu
@@ -75,41 +73,41 @@ def DictSubMenu(TextMenu, TextString= ""):
 # Print Dictionary
 ## Print Mobil
 def PrintColomMobil():
-    print("|" + f"{f"{"No.":6}|{"Plat No.":^15}|{"Brand":13}|{"Jenis":13}|{"Tahun":7}|{"Kapasitas":12}|{"Jaminan":10}|{"Status":12}|{"Mulai":12}":^120}" + "|")
+    print("No.|Plat No.|Brand|Jenis|Tahun|Kapasitas|Biaya|Jaminan|Status|Mulai")
 
 ## Daftar, Tambah, Update, Hapus = (0,1, MENU UTAMA), Sewa = (1,1), Kembali = (0,0)
 def PrintDaftarMobil(Key = 'Plat', Dipakai = 0, Tersedia = 1):
     for index, item in enumerate(DictMobil[Key]):
         if DictMobil['Dipakai'][index] == Dipakai or DictMobil['Dipakai'][index] == Tersedia:
-    #        Biaya = f"{DictMobil['Biaya'][index]:,}"
+            Biaya = f"{DictMobil['Biaya'][index]:,}"
     #        ListValueIndex = index
-            print("|" + f"{f"{index:<6}|{DictMobil['Plat'][index]:^15}|{DictMobil['Brand'][index]:13}|{DictMobil['Jenis'][index]:13}|{DictMobil['Tahun'][index]:^7}|{DictMobil['Kapasitas'][index]:^12}|{DictMobil['Jaminan'][index]:10}|{DictMobil['Status'][index]:12}|{DictMobil['Mulai'][index]:12}":^120}" + "|")
+            print(f"{index:<6}|{DictMobil['Plat'][index]:^15}|{DictMobil['Brand'][index]:13}|{DictMobil['Jenis'][index]:10}|{DictMobil['Tahun'][index]:^7}|{DictMobil['Kapasitas'][index]:^10}|{Biaya:^14}|{DictMobil['Jaminan'][index]:10}|{DictMobil['Status'][index]:12}|{DictMobil['Mulai'][index]:12}")
 
     # return ListValueIndex
 
 ## Print Daftar Inside Loop
 def PrintDaftarMobilIndex(index):
-    # Biaya = f"{DictMobil['Biaya'][index]:,}"
-    print("|" + f"{f"{index:<6}|{DictMobil['Plat'][index]:^15}|{DictMobil['Brand'][index]:13}|{DictMobil['Jenis'][index]:13}|{DictMobil['Tahun'][index]:^7}|{DictMobil['Kapasitas'][index]:^12}|{DictMobil['Jaminan'][index]:10}|{DictMobil['Status'][index]:12}|{DictMobil['Mulai'][index]:12}":^120}" + "|")
+    Biaya = f"{DictMobil['Biaya'][index]:,}"
+    print(f"{index:<6}|{DictMobil['Plat'][index]:^15}|{DictMobil['Brand'][index]:13}|{DictMobil['Jenis'][index]:10}|{DictMobil['Tahun'][index]:^7}|{DictMobil['Kapasitas'][index]:^10}|{Biaya:^14}|{DictMobil['Jaminan'][index]:10}|{DictMobil['Status'][index]:12}|{DictMobil['Mulai'][index]:12}")
 
 
 # Divider
 ## Plain Divider
 def SubMenuDivider(MenuDivider = 5):
     print()
-    print("|" + f"{MenuDivider * 3 * "- - - ":^120}" + "|")
+    print(3 * "- - - ")
 
 ## Divider With Prompt
 def DividerPrompt(TextString, TextStringMidEndWithSpace, MenuDivider = 5):
     print()
     print(TextString)
     print()
-    print("|" + f"{f"{f"{MenuDivider * "- - - " + TextStringMidEndWithSpace + MenuDivider * "- - - "}"}":^120}" + "|")
+    print(3 * "- - - ")
 
 ## Divider No Prompt
 def DividerLine(TextStringMidEndWithSpace, MenuDivider = 5):
     print()
-    print("|" + f"{f"{f"{MenuDivider * "- - - " + TextStringMidEndWithSpace + MenuDivider * "- - - "}"}":^120}" + "|")
+    print(3 * "- - - ")
 
 
 # Callback Functions
@@ -123,6 +121,14 @@ def PrintCarList(Key = 'Plat', Dipakai = 0, Tersedia = 1):
     print()
     UserInput3 = input("+ Tekan apapun untuk kembali ke SUB-MENU: ")
     SubMenuDivider()
+
+def PrintCarListNoMenu(Key = 'Plat', Dipakai = 0, Tersedia = 1):
+    SubMenuDivider()
+    print()
+    PrintColomMobil()
+    print()
+    PrintDaftarMobil(Key, Dipakai, Tersedia)
+    print()
 
 ## Check Number Plate
 def CheckPlatMobil(ListUserInput3Split, UserInput3Upr):
@@ -150,7 +156,6 @@ def ChangeToDipakai(Index, InputTanggal, InputJaminan):
     DictMobil["Jaminan"][Index] = InputJaminan
     DictMobil["Dipakai"][Index] = 0
 
-
 ## Change to Tersedia
 def ChangeToTersedia(Index):
     DictMobil["Mulai"][Index] = "-"
@@ -158,7 +163,48 @@ def ChangeToTersedia(Index):
     DictMobil["Jaminan"][Index] = "-"
     DictMobil["Dipakai"][Index] = 1
 
+def Sortir(Key):
+    Val1 = DictMobil[Key].copy()
+    Val2 = list(set(Val1))
+    Val2.sort()
+    PrintColomMobil()
+    print()
+    for index, item in enumerate(DictMobil[Key]):
+        if Val2 == []:
+            continue
+        
+        Val3 = max(Val2)
+        for index, item in enumerate(DictMobil[Key]):
+            if item == Val3:
+                PrintDaftarMobilIndex(index)
+        Val2.pop()
+        
+    print()    
+    UserInput5 = input("+ Tekan apapun untuk kembali ke SUB-MENU: ")
+    DividerLine("< Kembali ke SUB-MENU > ")
 
+def Pembayaran(Day, Total, CheckPlatMobilIndex):
+    print()
+    print(f"Waktu sewa adalah: {Day} hari")
+    print(f"Total yang harus dibayar adalah: {Total:,}")
+    print()
+    UserInput7 = int(input(">>>>>>> Masukkan nominal pembayaran: "))
+    
+    if UserInput7 > Total:
+        print(f"Terima Kasih, kembalian anda adalah: {(UserInput7 - Total):,}")
+        ChangeToTersedia(CheckPlatMobilIndex)
+        DividerPrompt("[ Mobil sukses dikembalikan ]", "< Kembali ke SUB-MENU > ")
+    
+    elif UserInput7 < Total:
+        print(f"Uang anda tidak mencukupi, nominal yang harus dibayar adalah: {Total:,}")
+        DividerPrompt("[ Pembayaran Gagal ]", "< Kembali ke SUB-MENU > ")
+        
+    else:
+        print("Terima Kasih")
+        ChangeToTersedia(CheckPlatMobilIndex)
+        DividerPrompt("[ Mobil sukses dikembalikan ]", "< Kembali ke SUB-MENU > ")
+        
+        
 # Functions
 
 ## Daftar Mobil - DONE
@@ -175,7 +221,42 @@ def DaftarMobil():
                 break
             
             elif UserInput2 == '1':
-                PrintCarList()
+                PrintCarListNoMenu()
+                UserInput3 = input(">>> Apakah anda ingin mensortir daftar mobil? (ya/tidak): ")
+                
+                if UserInput3 == 'menu' or UserInput3 == 'tidak':
+                    DividerLine("< Kembali ke SUB-MENU > ")
+                    continue
+                
+                elif UserInput3 == 'ya':
+                    SubMenuDivider()
+                    print()
+                    print(f"Berdasarkan:")
+                    print(f"1. Tahun Mobil")
+                    print(f"2. Kapasitas")
+                    print(f"3. Biaya")
+                    print()
+                    UserInput4 = input(">>>> Masukkan pilihan yang diinginkan: ").lower()
+                    print()
+                    
+                    if UserInput4 == 'menu':
+                        DividerLine("< Kembali ke SUB-MENU > ")
+                        continue
+                    
+                    elif UserInput4 == '1' or UserInput4 == 'tahun':
+                        Sortir('Tahun')
+                        
+                    elif UserInput4 == '2' or UserInput4 == 'kapasitas':
+                        Sortir('Kapasitas') 
+                    
+                    elif UserInput4 == '3' or UserInput4 == 'biaya':
+                        Sortir('Biaya')
+                            
+                    else:
+                        DividerPrompt("[ Index tidak sesuai ]", "< Kembali ke SUB-MENU > ")
+                    
+                else:
+                    DividerPrompt("[ Index tidak sesuai ]", "< Kembali ke SUB-MENU > ")
             
             elif UserInput2 == '2':
                 print()
@@ -262,9 +343,9 @@ def SewaMobil():
                             ListUserInput5Split = UserInput5.split("-")
                             LongIntUserInput5 = UserInput5.replace("-","")
                             
-                            if LongIntUserInput5.isdigit() == True and len(ListUserInput5Split[0]) == 2 and int(ListUserInput5Split[0]) % 31 < 31 and len(ListUserInput5Split[1]) == 2 and int(ListUserInput5Split[1]) % 31 < 12 and len(ListUserInput5Split[2]) == 4:        
+                            if LongIntUserInput5.isdigit() == True and len(ListUserInput5Split[0]) == 2 and int(ListUserInput5Split[0]) < 31 and len(ListUserInput5Split[1]) == 2 and int(ListUserInput5Split[1]) < 12 and len(ListUserInput5Split[2]) == 4:        
                                 print()
-                                UserInput6 = input(">>>>>>> Apakah anda yakin? ")
+                                UserInput6 = input(">>>>>>> Apakah anda yakin? (ya/tidak): ")
                                     
                                 if UserInput6 == 'menu' or UserInput6 == 'tidak':
                                     DividerPrompt("[ Data belum diganti ]", "< Kembali ke SUB-MENU > ")
@@ -278,7 +359,7 @@ def SewaMobil():
                                         
                                     else:
                                         print()
-                                        UserInput8 = input(">>>>>>> Apakah anda yakin? ")
+                                        UserInput8 = input(">>>>>>> Apakah anda yakin? (ya/tidak): ")
                                     
                                         if UserInput8 == 'menu' or UserInput8 == 'tidak':
                                             DividerPrompt("[ Data belum diganti ]", "< Kembali ke SUB-MENU > ")
@@ -358,21 +439,66 @@ def KembalikanMobil():
                         
                         UserInput4 = input(">>>> Apakah mobil ini ingin dikembalikan (ya/tidak): ")
                         
-                        if UserInput4 == 'menu':
+                        if UserInput4 == 'menu' or UserInput4 == 'tidak':
                             DividerPrompt("[ Data mobil belum disimpan ]", "< Kembali ke SUB-MENU > ")
                             continue
                         
                         elif UserInput4 == 'ya':
-                            ChangeToTersedia(CheckPlatMobilIndex)
-
-                            DividerPrompt("[ Mobil sukses dikembalikan ]", "< Kembali ke SUB-MENU > ")
+                            print()
+                            UserInput5 = input(">>>>> Tanggal pengembalian mobil? (DD-MM-YYYY): ")
                             
-                        elif UserInput4 == 'tidak':
-                            DividerPrompt("[ Mobil gagal dikembalikan ]", "< Kembali ke SUB-MENU > ")
-                                                                        
-                        else:
-                            DividerPrompt("[ Index tidak sesuai ]", "< Kembali ke SUB-MENU > ")
+                            ListUserInput5Split = UserInput5.split("-")
+                            LongIntUserInput5 = UserInput5.replace("-","")
+                            
+                            if LongIntUserInput5.isdigit() == True and len(ListUserInput5Split[0]) == 2 and int(ListUserInput5Split[0]) < 31 and len(ListUserInput5Split[1]) == 2 and int(ListUserInput5Split[1]) < 12 and len(ListUserInput5Split[2]) == 4:        
+                                print()
+                                UserInput6 = input(">>>>>> Apakah anda yakin? (ya/tidak): ").lower()
+                                
+                                if UserInput6 == 'menu' or UserInput6 == 'tidak':
+                                    DividerPrompt("[ Data mobil belum disimpan ]", "< Kembali ke SUB-MENU > ")
+                                    continue
+                                
+                                elif UserInput6 == 'ya':
+                                    ListDictMobil = DictMobil['Mulai'][CheckPlatMobilIndex]
+                                    ListDictMobilSplit = ListDictMobil.split("-")
+                                    
+                                    if int(ListUserInput5Split[0]) > int(ListDictMobilSplit[0]) and int(ListUserInput5Split[1]) == int(ListDictMobilSplit[1]):
+                                        Day = int(ListUserInput5Split[0]) - int(ListDictMobilSplit[0])
+                                        Total = Day * DictMobil['Biaya'][CheckPlatMobilIndex]
+                                        
+                                        Pembayaran(Day, Total, CheckPlatMobilIndex)
+                                        
+                                    elif int(ListUserInput5Split[0]) < int(ListDictMobilSplit[0]) and int(ListUserInput5Split[1]) > int(ListDictMobilSplit[1]):
+                                        Day = (int(ListUserInput5Split[0]) + (30 * (int(ListUserInput5Split[1]) - int(ListDictMobilSplit[1])))) - int(ListDictMobilSplit[0])
+                                        Total = Day * DictMobil['Biaya'][CheckPlatMobilIndex]
+                                        print()
+                                        print(f"Waktu sewa adalah: {Day} hari")
+                                        print(f"Total yang harus dibayar adalah: {Total:,}")
+                                        print()
+                                        UserInput7 = int(input(">>>>>>> Masukkan nominal pembayaran: "))
+                                        
+                                        if UserInput7 > Total:
+                                            print(f"Terima Kasih, kembalian anda adalah: {(UserInput7 - Total):,}")
+                                            ChangeToTersedia(CheckPlatMobilIndex)
+                                            DividerPrompt("[ Mobil sukses dikembalikan ]", "< Kembali ke SUB-MENU > ")
+                                        
+                                        elif UserInput7 < Total:
+                                            print(f"Uang anda tidak mencukupi, nominal yang harus dibayar adalah: {Total:,}")
+                                            DividerPrompt("[ Pembayaran Gagal ]", "< Kembali ke SUB-MENU > ")
                                             
+                                        else:
+                                            print("Terima Kasih")
+                                            ChangeToTersedia(CheckPlatMobilIndex)
+                                            DividerPrompt("[ Mobil sukses dikembalikan ]", "< Kembali ke SUB-MENU > ")
+                                    
+                                    else:
+                                        DividerPrompt("[ Pembayaran Gagal ]", "< Kembali ke SUB-MENU > ")
+                                else:    
+                                    DividerPrompt("[ Index tidak sesuai ]", "< Kembali ke SUB-MENU > ")
+                            else:
+                                DividerPrompt("[ Tanggal tidak sesuai ]", "< Kembali ke SUB-MENU > ")
+                        else:
+                            DividerPrompt("[ Index tidak sesuai ]", "< Kembali ke SUB-MENU > ")              
                     else:
                         DividerPrompt("[ Mobil sedang tidak disewa ]", "< Kembali ke SUB-MENU > ")                 
                 else:
@@ -589,7 +715,7 @@ def UpdateMobil():
                                 
                                 elif len(ListUserInput6Split) == 3 and len(ListUserInput6Split[0]) > 0 and len(ListUserInput6Split[0]) < 3 and ListUserInput6Split[0].isdigit() == False and len(ListUserInput6Split[1]) > 0 and len(ListUserInput6Split[1]) < 5 and ListUserInput6Split[1].isdigit() == True and len(ListUserInput6Split[2]) > 0 and len(ListUserInput6Split[2]) < 4 and ListUserInput6Split[2].isdigit() == False:
                                     print()
-                                    UserInput7 = input(">>>>>>> Apakah anda yakin? ")
+                                    UserInput7 = input(">>>>>>> Apakah anda yakin? (ya/tidak): ")
                                     
                                     if UserInput7 == 'menu' or UserInput7 == 'tidak':
                                         DividerPrompt("[ Data belum diganti ]", "< Kembali ke SUB-MENU > ")
@@ -605,7 +731,7 @@ def UpdateMobil():
                             
                             elif UserInput5 == 'Status':
                                     print()
-                                    UserInput6 = input(">>>>>> Apakah anda yakin? ")
+                                    UserInput6 = input(">>>>>> Apakah anda yakin? (ya/tidak): ")
                                     
                                     if UserInput6 == 'menu' or UserInput6 == 'tidak':
                                         DividerPrompt("[ Data belum diganti ]", "< Kembali ke SUB-MENU > ")
@@ -633,7 +759,7 @@ def UpdateMobil():
                                 
                                 elif UserInput5 == 'Brand' or UserInput5 == 'Jenis':
                                     print()
-                                    UserInput7 = input(">>>>>>> Apakah anda yakin? ")
+                                    UserInput7 = input(">>>>>>> Apakah anda yakin? (ya/tidak): ")
                                     
                                     if UserInput7 == 'menu' or UserInput7 == 'tidak':
                                         DividerPrompt("[ Data belum diganti ]", "< Kembali ke SUB-MENU > ")
@@ -646,7 +772,7 @@ def UpdateMobil():
                                         
                                 elif UserInput5 == 'Tahun' or UserInput5 == 'Kapasitas':
                                     print()
-                                    UserInput7 = input(">>>>>>> Apakah anda yakin? ")
+                                    UserInput7 = input(">>>>>>> Apakah anda yakin? (ya/tidak): ")
                                     
                                     if UserInput7 == 'menu' or UserInput7 == 'tidak':
                                         DividerPrompt("[ Data belum diganti ]", "< Kembali ke SUB-MENU > ")
@@ -661,7 +787,7 @@ def UpdateMobil():
                                 elif UserInput5 == 'Jaminan':
                                     UserInput6Upr = UserInput6.upper()
                                     print()
-                                    UserInput7 = input(">>>>>>> Apakah anda yakin? ")
+                                    UserInput7 = input(">>>>>>> Apakah anda yakin? (ya/tidak): ")
                                     
                                     if UserInput7 == 'menu' or UserInput7 == 'tidak':
                                         DividerPrompt("[ Data belum diganti ]", "< Kembali ke SUB-MENU > ")
@@ -677,7 +803,7 @@ def UpdateMobil():
                                     LongIntUserInput6 = UserInput6.replace("-","")
                                     
                                     print()
-                                    UserInput7 = input(">>>>>>> Apakah anda yakin? ")
+                                    UserInput7 = input(">>>>>>> Apakah anda yakin? (ya/tidak): ")
                                     
                                     if UserInput7 == 'menu' or UserInput7 == 'tidak':
                                         DividerPrompt("[ Data belum diganti ]", "< Kembali ke SUB-MENU > ")
