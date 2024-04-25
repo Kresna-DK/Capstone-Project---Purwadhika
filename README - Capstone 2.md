@@ -1,3 +1,5 @@
+https://public.tableau.com/app/profile/kresna.kumbara/viz/SupermarketDemographicTrendAnalysis/DB0-Demographics
+
 Didalam analisa data set supermarket ini, saya berusaha untuk menunjukan dan membagi jenis-jenis demografi pelanggan yang mungkin berdampak pada pembelian produk dan sukses kampanye yang diberlakukan oleh supermarket ini.
 
 Pertama saya melakukan evaluasi dataset untuk melihat tipe data dan apakah ada data yang tidak memiliki nilai (value), proses yang saya gunakan adalah fungsi .info() untuk melihat jenis data dan fungsi .isna() dan matrix missingno untuk visualisasi data yang tidak memiliki nilai. Lalu saya menggunakan funsi .duplicated() untuk melihat apakah ada data yang memiliki nilai yang duplikat dan juga menggunakan .describe() untuk melihat info nilai angka didalam dataset tersebut.
@@ -10,4 +12,4 @@ Kegunaan analisa produk yang saya lakukan adalah untuk melihat produk apa yang p
 
 Hal terakhir yang saya analisa adalah bagaimana respon para pelanggan terhadap kampanye (promosi) yang sudah dilakukan oleh supermarket ini dan demografi yang memiliki respon terbaik.
 
-Pada akhirnya saya memberi beberapa langkah yang bisa dilakukan oleh supermarket ini untuk meningkatkan jumlah respon pada kampanye yang akan datang, kemungkinan untuk meningkatkan pembelian produk tertentu dengan cara fokus ke demografi yang lebih spesifik atau berusaha mendapatkan pembelian dari demografi lain.
+Untuk penutup saya juga memberi beberapa langkah yang bisa dilakukan oleh supermarket ini untuk meningkatkan jumlah respon pada kampanye yang akan datang, kemungkinan untuk meningkatkan pembelian produk tertentu dengan cara fokus ke demografi yang lebih spesifik atau berusaha mendapatkan pembelian dari demografi lain.
